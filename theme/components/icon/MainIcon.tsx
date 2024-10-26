@@ -1,5 +1,5 @@
-import { ThemeContext } from "rspress/runtime";
-import { SVGProps, FC, useContext } from "react";
+import classes from "@Styles/Icon.module.scss";
+import { SVGProps, FC } from "react";
 
 interface MainIconProps extends SVGProps<SVGSVGElement> {
   ignoreTheme?: boolean;
@@ -7,9 +7,6 @@ interface MainIconProps extends SVGProps<SVGSVGElement> {
 
 const MainIcon: FC<MainIconProps> = (props: MainIconProps) => {
   const { ignoreTheme, ...svgProps } = props;
-  const { theme } = useContext(ThemeContext);
-
-  const color = theme === "light" ? "#414141" : "#fff";
 
   return (
     <svg width="480" height="480" viewBox="0 0 4800 4800" {...svgProps}>
@@ -22,7 +19,7 @@ const MainIcon: FC<MainIconProps> = (props: MainIconProps) => {
       ) : (
         <path
           fillRule="evenodd"
-          fill={color}
+          className={classes.icon}
           d="M2994.48,4244.61L505.28,2807.47V1992.53l256.572-148.14L1287,2285l258-307,160.39,135.56L1209.27,2400l1786.1,1031.21V2427.79L3517,1806,2420.98,886.5l573.5-331.11,705.76,407.474V3837.14Z"
         />
       )}

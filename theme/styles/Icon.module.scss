@@ -1,0 +1,19 @@
+:global(html.dark) {
+  --icon-color: #fff;
+  --icon-highlight: #0ad7af;
+}
+
+:global(html) {
+  --icon-color: #414141;
+  --icon-highlight: #02bfa5;
+}
+
+.icon {
+  color: var(--icon-color);
+  fill: var(--icon-color);
+}
+
+.highlight {
+  color: var(--icon-highlight);
+  fill: var(--icon-highlight);
+}
