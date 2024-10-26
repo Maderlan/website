@@ -1,0 +1,32 @@
+{
+  "guide": {
+    "en": "Guide",
+    "zh": "指南",
+    "ja": "ガイド"
+  },
+  "config": {
+    "en": "Config",
+    "zh": "配置",
+    "ja": "設定"
+  },
+  "start": {
+    "en": "Getting Started",
+    "zh": "开始",
+    "ja": "はじめに"
+  },
+  "features": {
+    "en": "Features",
+    "zh": "特性",
+    "ja": "特徴"
+  },
+  "deployment": {
+    "en": "Deployment",
+    "zh": "部署",
+    "ja": "デプロイ"
+  },
+  "issues": {
+    "en": "Issues",
+    "zh": "问题",
+    "ja": "問題"
+  }
+}

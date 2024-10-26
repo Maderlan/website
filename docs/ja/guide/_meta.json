@@ -1,0 +1,24 @@
+[
+  {
+    "type": "dir",
+    "name": "start",
+    "label": "start"
+  },
+  {
+    "type": "dir",
+    "name": "features",
+    "label": "features"
+  },
+  {
+    "type": "dir",
+    "name": "deployment",
+    "label": "deployment"
+  },
+  {
+    "type": "dir",
+    "name": "issues",
+    "label": "issues"
+  },
+  "break-changes",
+  "thanks"
+]
