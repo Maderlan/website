@@ -16,7 +16,6 @@ export default defineConfig({
   ],
   markdown: {
     checkDeadLinks: true,
-    showLineNumbers: true,
     highlightLanguages: [
       ['js', 'javascript'],
       ['ts', 'typescript'],
