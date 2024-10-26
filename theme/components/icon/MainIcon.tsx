@@ -9,7 +9,7 @@ const MainIcon: FC<MainIconProps> = (props: MainIconProps) => {
   const { ignoreTheme, ...svgProps } = props;
   const { theme } = useContext(ThemeContext);
 
-  const color = theme === "dark" ? "#fff" : "#414141";
+  const color = theme === "light" ? "#414141" : "#fff";
 
   return (
     <svg width="480" height="480" viewBox="0 0 4800 4800" {...svgProps}>

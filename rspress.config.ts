@@ -16,6 +16,20 @@ export default defineConfig({
   ],
   markdown: {
     checkDeadLinks: true,
+    showLineNumbers: true,
+    highlightLanguages: [
+      ['js', 'javascript'],
+      ['ts', 'typescript'],
+      ['jsx', 'tsx'],
+      ['xml', 'xml-doc'],
+      ['md', 'markdown'],
+      ['mdx', 'tsx'],
+      ['yml', 'yaml'],
+      ['py', 'python'],
+      ['sh', 'bash'],
+      ['json', 'json'],
+      ['txt', 'plaintext']
+    ]
   },
   ssg: {
     strict: true,
@@ -50,6 +64,8 @@ export default defineConfig({
         content: "https://discord.gg/dV9A6ZjVhC",
       },
     ],
+    lastUpdated: true,
+    enableScrollToTop: true,
     enableContentAnimation: true,
     enableAppearanceAnimation: false,
     footer: {
@@ -63,6 +79,7 @@ export default defineConfig({
         outlineTitle: "目录",
         prevPageText: "上一页",
         nextPageText: "下一页",
+        lastUpdatedText: "最后更新于",
         searchPlaceholderText: "搜索文档",
         searchNoResultsText: "没有找到有关内容",
         searchSuggestedQueryText: "建议更换不同的关键字后重试",
@@ -73,6 +90,7 @@ export default defineConfig({
         outlineTitle: "Table of Contents",
         prevPageText: "Previous",
         nextPageText: "Next",
+        lastUpdatedText: "Last Updated",
         searchPlaceholderText: "Search Docs",
         searchNoResultsText: "No results for",
         searchSuggestedQueryText: "Please try again with a different keyword",
@@ -83,6 +101,7 @@ export default defineConfig({
         outlineTitle: "目次",
         prevPageText: "前へ",
         nextPageText: "次へ",
+        lastUpdatedText: "最終更新",
         searchPlaceholderText: "ドキュメントを検索",
         searchNoResultsText: "関連する結果がありません",
       }

@@ -8,9 +8,9 @@ export const LogoHeader: FC = () => {
   const pageData = usePageData();
   const defaultLang = pageData.siteData.lang ?? "";
   const lang = pageData.page.lang;
-  const darkMode = theme === "dark";
-  const color = darkMode ? "#fff" : "#414141";
-  const highlightColor = darkMode ? "#0AD7AF" : "#02BFA5";
+  const lightMode = theme === "light";
+  const color = lightMode ? "#414141" : "#fff";
+  const highlightColor = lightMode ? "#02BFA5" : "#0AD7AF";
 
   return (
     <div style={{ display: "flex", alignItems: "center", gap: "2px" }}>
