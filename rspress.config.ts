@@ -12,7 +12,7 @@ export default defineConfig({
   plugins: [
     katex(),
     pluginSitemap({
-      domain: "https://ctf.gzti.me",
+      domain: "https://gzctf.gzti.me",
     }),
   ],
   markdown: {

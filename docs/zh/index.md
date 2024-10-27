@@ -1,6 +1,6 @@
 ---
 pageType: home
-titleSuffix: "GZ::CTF"
+titleSuffix: "GZ::CTF Docs"
 
 hero:
   name: GZ::CTF
