@@ -1,12 +1,13 @@
 import * as path from "path";
 import { defineConfig } from "rspress/config";
 import pluginSitemap from "rspress-plugin-sitemap";
-import katex from 'rspress-plugin-katex';
+import katex from "rspress-plugin-katex";
 
 export default defineConfig({
   root: path.join(__dirname, "docs"),
   title: "GZ::CTF",
   lang: "en",
+  description: "GZ::CTF Project Documentation",
   icon: "/favicon.webp",
   plugins: [
     katex(),
@@ -17,18 +18,18 @@ export default defineConfig({
   markdown: {
     checkDeadLinks: true,
     highlightLanguages: [
-      ['js', 'javascript'],
-      ['ts', 'typescript'],
-      ['jsx', 'tsx'],
-      ['xml', 'xml-doc'],
-      ['md', 'markdown'],
-      ['mdx', 'tsx'],
-      ['yml', 'yaml'],
-      ['py', 'python'],
-      ['sh', 'bash'],
-      ['json', 'json'],
-      ['txt', 'plaintext']
-    ]
+      ["js", "javascript"],
+      ["ts", "typescript"],
+      ["jsx", "tsx"],
+      ["xml", "xml-doc"],
+      ["md", "markdown"],
+      ["mdx", "tsx"],
+      ["yml", "yaml"],
+      ["py", "python"],
+      ["sh", "bash"],
+      ["json", "json"],
+      ["txt", "plaintext"],
+    ],
   },
   ssg: {
     strict: true,
@@ -48,7 +49,7 @@ export default defineConfig({
       lang: "ja",
       label: "日本語",
       description: "GZ::CTF プロジェクトのドキュメント",
-    }
+    },
   ],
   themeConfig: {
     socialLinks: [
@@ -103,7 +104,28 @@ export default defineConfig({
         lastUpdatedText: "最終更新",
         searchPlaceholderText: "ドキュメントを検索",
         searchNoResultsText: "関連する結果がありません",
-      }
+      },
     ],
+  },
+  builderConfig: {
+    html: {
+      tags: [
+        {
+          tag: "meta",
+          attrs: {
+            property: "og:image",
+            content: "/favicon.webp",
+          },
+        },
+        {
+          tag: "meta",
+          attrs: {
+            name: "keywords",
+            content:
+              "GZ::CTF, CTF, GZTimeWalker, GZCTF, GZCTF Docs, GZCTF Project",
+          },
+        },
+      ],
+    },
   },
 });

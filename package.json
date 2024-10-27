@@ -6,7 +6,7 @@
     "dev": "rspress dev",
     "build": "rspress build",
     "preview": "rspress preview",
-    "prettier": "prettier --write docs theme"
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "react-ga4": "^2.1.0",
