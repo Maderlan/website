@@ -24,6 +24,8 @@ If you only have one machine and want to run GZCTF through Docker, you can speci
 INSTALL_K3S_EXEC="--docker"
 ```
 
+:::
+
 :::info
 
 If you need to run more than 255 challenge containers on a single k3s instance, you **need to specify `INSTALL_K3S_EXEC` during k3s installation** and change `node-cidr-mask-size` to the desired subnet size.

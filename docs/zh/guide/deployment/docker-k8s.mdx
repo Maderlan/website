@@ -24,6 +24,8 @@ k3s 是一个轻量级的 k8s 发行版，可以在单机和多机上快速部�
 INSTALL_K3S_EXEC="--docker"
 ```
 
+:::
+
 :::info
 
 如果需要在一台 k3s 实例上运行超过 255 个题目容器，**需要在安装 k3s 时** 指定 `INSTALL_K3S_EXEC`，并更改 `node-cidr-mask-size` 为所需的子网大小。
