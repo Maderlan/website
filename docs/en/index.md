@@ -18,21 +18,21 @@ hero:
 
 features:
   - title: Easy to Deploy
-    details: One-click deployment, supports multiple deployment methods to meet different scenario requirements.
+    details: One-click deployment with support for various methods to accommodate different scenarios.
     icon: 🚀
   - title: High Performance
     details: Holds high-concurrency access with powerful system architecture and high-performance front-end design.
     icon: ⚡
   - title: Rich features
-    details: Dynamic scores, leaderboards, cheating detection, traffic records, and write-ups collection are all available.
+    details: Dynamic scoring, leaderboards, cheat detection, traffic logging, and write-up collections are all available.
     icon: 🛠️
   - title: Secure and Reliable
-    details: Complete security mechanisms to ensure user data security and prevent various attacks.
+    details: Robust security measures to safeguard user data and fend off various attacks.
     icon: 🔒
   - title: Customizable and Flexible
-    details: Supports multiple types of challenges, customizable challenges, and platform styles to meet different requirements.
+    details: Accommodates various challenge types, customizable challenges, and customizable UI to suit diverse needs.
     icon: 🎨
   - title: Community Support
-    details: Rich community resources, technical support, and problem-solving are all available.
+    details: Provides a wealth of community resources, technical support, and troubleshooting solutions.
     icon: 🤝
 ---
