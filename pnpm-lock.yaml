@@ -493,8 +493,8 @@ packages:
     resolution: {integrity: sha512-b6Ilus+c3RrdDk+JhLKUAQfzzgLEPy6wcXqS7f/xe1EETvsDP6GORG7SFuOs6cID5YkqchW/LXZbX5bc8j7ZcQ==}
     engines: {node: '>=8'}
 
-  caniuse-lite@1.0.30001671:
-    resolution: {integrity: sha512-jocyVaSSfXg2faluE6hrWkMgDOiULBMca4QLtDT39hw1YxaIPHWc1CcTCKkPmHgGH6tKji6ZNbMSmUAvENf2/A==}
+  caniuse-lite@1.0.30001672:
+    resolution: {integrity: sha512-XhW1vRo1ob6aeK2w3rTohwTPBLse/rvjq+s3RTSBwnlZqoFFjx9cHsShJjAIbLsLjyoacaTxpLZy9v3gg6zypw==}
 
   ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
@@ -2073,7 +2073,7 @@ snapshots:
   '@modern-js/utils@2.60.5':
     dependencies:
       '@swc/helpers': 0.5.13
-      caniuse-lite: 1.0.30001671
+      caniuse-lite: 1.0.30001672
       lodash: 4.17.21
       rslog: 1.2.3
 
@@ -2181,7 +2181,7 @@ snapshots:
       '@module-federation/runtime-tools': 0.5.1
       '@rspack/binding': 1.0.14
       '@rspack/lite-tapable': 1.0.1
-      caniuse-lite: 1.0.30001671
+      caniuse-lite: 1.0.30001672
     optionalDependencies:
       '@swc/helpers': 0.5.13
 
@@ -2557,7 +2557,7 @@ snapshots:
 
   browserslist@4.24.2:
     dependencies:
-      caniuse-lite: 1.0.30001671
+      caniuse-lite: 1.0.30001672
       electron-to-chromium: 1.5.47
       node-releases: 2.0.18
       update-browserslist-db: 1.1.1(browserslist@4.24.2)
@@ -2568,7 +2568,7 @@ snapshots:
 
   cac@6.7.14: {}
 
-  caniuse-lite@1.0.30001671: {}
+  caniuse-lite@1.0.30001672: {}
 
   ccount@2.0.1: {}
 
