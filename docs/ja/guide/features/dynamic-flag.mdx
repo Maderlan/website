@@ -123,7 +123,7 @@ encrypted_game_pk = "...some base64..."
 chal_id = 114
 team_token = "114:...some base64..."
 
-# you can get this salt from /api/edit/games/{id}/teamhashsalt
+# you can get this salt from /api/edit/games/{id}/hashsalt
 game_salt = str_sha256(f"GZCTF@{encrypted_game_pk}@PK")
 
 # you should calculate this hash by yourself, and put it in challenge
