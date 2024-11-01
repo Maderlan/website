@@ -36,14 +36,14 @@ export default defineConfig({
   },
   locales: [
     {
-      lang: "zh",
-      label: "简体中文",
-      description: "GZ::CTF 使用文档",
-    },
-    {
       lang: "en",
       label: "English",
       description: "Docs for GZ::CTF Project",
+    },
+    {
+      lang: "zh",
+      label: "简体中文",
+      description: "GZ::CTF 使用文档",
     },
     {
       lang: "ja",
@@ -74,17 +74,6 @@ export default defineConfig({
     hideNavbar: "auto",
     locales: [
       {
-        lang: "zh",
-        label: "简体中文",
-        outlineTitle: "目录",
-        prevPageText: "上一页",
-        nextPageText: "下一页",
-        lastUpdatedText: "最后更新于",
-        searchPlaceholderText: "搜索文档",
-        searchNoResultsText: "没有找到有关内容",
-        searchSuggestedQueryText: "建议更换不同的关键字后重试",
-      },
-      {
         lang: "en",
         label: "English",
         outlineTitle: "Table of Contents",
@@ -94,6 +83,17 @@ export default defineConfig({
         searchPlaceholderText: "Search Docs",
         searchNoResultsText: "No results for",
         searchSuggestedQueryText: "Please try again with a different keyword",
+      },
+      {
+        lang: "zh",
+        label: "简体中文",
+        outlineTitle: "目录",
+        prevPageText: "上一页",
+        nextPageText: "下一页",
+        lastUpdatedText: "最后更新于",
+        searchPlaceholderText: "搜索文档",
+        searchNoResultsText: "没有找到有关内容",
+        searchSuggestedQueryText: "建议更换不同的关键字后重试",
       },
       {
         lang: "ja",
