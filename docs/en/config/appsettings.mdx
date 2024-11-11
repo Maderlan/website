@@ -18,9 +18,9 @@ Here is a complete example of configuration:
   "ConnectionStrings": {
     "Database": "Host=db:5432;Database=gzctf;Username=postgres;Password=<Database Password>"
     // redis is optional
-    //"RedisCache": "cache:6379,password=<Redis Password>",
-    // external storage (aws s3, azure blob) is optional, aws s3 for example
-    //"Storage": "aws.s3://keyId=<YOUR_KEY_ID>;key=<YOUR_KEY>;bucket=<YOUR_BUCKET>;region=<YOUR_REGION>"
+    // "RedisCache": "cache:6379,password=<Redis Password>",
+    // external storage (minio s3, aws s3, azure blob) is optional, aws s3 for example
+    // "Storage": "minio.s3://keyId=<YOUR_KEY_ID>;key=<YOUR_KEY>;bucket=<YOUR_BUCKET>;region=<YOUR_REGION>"
   },
   "Logging": {
     "LogLevel": {
@@ -164,9 +164,9 @@ Here is a complete example of configuration:
 
 ### ConnectionStrings
 
-Here we can the configure the connection of the database. 
+Here we can the configure the connection of the database.
 
-#### `Database` 
+#### `Database`
 
 This field is required.
 
@@ -186,12 +186,21 @@ GZCTF uses Redis as the cache and message queue. In the case of single instance 
 
 In v1.0 and later, GZCTF supports using [Garnet](https://github.com/microsoft/garnet) as the cache service.
 
-
 #### `Storage`
 
 This field is optional.
 
 GZCTF supports external storage services like AWS S3 and Azure Blob Storage. You can configure the storage service to store files and other data.
+
+- [MinIO S3](https://min.io/)
+
+  `minio.s3://keyId=...;key=...;bucket=...;region=...;serviceUrl=...`
+
+  - `keyId`: Optional. Access Key ID
+  - `key`: Optional. Secret Access Key
+  - `bucket`: Bucket name
+  - `region`: Region (such as `us-east-1`)
+  - `serviceUrl`: MinIO service URL
 
 - [AWS S3](https://aws.amazon.com/s3/)
 
@@ -201,13 +210,20 @@ GZCTF supports external storage services like AWS S3 and Azure Blob Storage. You
   - `key`: Optional. Secret Access Key
   - `bucket`: Bucket name
   - `region`: Region (such as `us-east-1`)
-  - `serviceUrl` Optional. URL of the storage provider (for example for DigitalOcean).
+  - `serviceUrl`: Optional. URL of the storage provider (for example for DigitalOcean).
 
 - [Azure Blob](https://azure.microsoft.com/en-us/services/storage/blobs/)
 
   `azure.file://account=...;key=...`
 
   For more information, checkout [Quickstart: Azure Blob Storage client library for .NET](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=visual-studio%2Cconnection-string%2Croles-azure-portal%2Csign-in-azure-cli%2Cidentity-visual-studio&pivots=blob-storage-quickstart-scratch#authenticate-to-azure-and-authorize-access-to-blob-data)
+
+For more information, see the following links:
+
+- [AWS](https://www.nuget.org/packages/FluentStorage.AWS): https://github.com/robinrodricks/FluentStorage/wiki/AWS-S3-Storage, https://github.com/robinrodricks/FluentStorage/wiki/MinIO-Storage
+- [Azure.Blobs](https://www.nuget.org/packages/FluentStorage.Azure.Blobs): https://github.com/robinrodricks/FluentStorage/wiki/Azure-Blob-Storage
+
+If you want to use more FluentStorage providers, please open an issue.
 
 ### Logging
 

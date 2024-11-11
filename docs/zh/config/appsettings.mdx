@@ -18,9 +18,9 @@
   "ConnectionStrings": {
     "Database": "Host=db:5432;Database=gzctf;Username=postgres;Password=<Database Password>"
     // redis is optional
-    //"RedisCache": "cache:6379,password=<Redis Password>",
-    // external storage (aws s3, azure blob) is optional, aws s3 for example
-    //"Storage": "aws.s3://keyId=<YOUR_KEY_ID>;key=<YOUR_KEY>;bucket=<YOUR_BUCKET>;region=<YOUR_REGION>"
+    // "RedisCache": "cache:6379,password=<Redis Password>",
+    // external storage (minio s3, aws s3, azure blob) is optional, aws s3 for example
+    // "Storage": "minio.s3://keyId=<YOUR_KEY_ID>;key=<YOUR_KEY>;bucket=<YOUR_BUCKET>;region=<YOUR_REGION>"
   },
   "Logging": {
     "LogLevel": {
@@ -210,22 +210,38 @@ GZCTF 支持使用外部存储，如 AWS S3、Azure Blob 等。GZCTF 会将所�
 
 我们支持以下格式，他们所对应的 `ConnectionString` 格式如下：
 
+- [MinIO S3](https://min.io/)
+
+  `minio.s3://keyId=...;key=...;bucket=...;region=...;serviceUrl=...`
+
+  - `keyId`：可选。Access Key ID
+  - `key`：可选。Secret Access Key
+  - `bucket`：Bucket 名称
+  - `region`：区域 (例如 `us-east-1`)
+  - `serviceUrl`：MinIO 服务的地址
+
 - [AWS S3](https://aws.amazon.com/s3/)
 
   `aws.s3://keyId=...;key=...;bucket=...;region=...`
 
-  - `keyId`: 可选。Access Key ID
-  - `key`: 可选。Secret Access Key
-  - `bucket`: Bucket 名称
-  - `region`: 区域 (例如 `us-east-1`)
-  - `serviceUrl` 可选。兼容 S3 的服务的地址
+  - `keyId`：可选。Access Key ID
+  - `key`：可选。Secret Access Key
+  - `bucket`：Bucket 名称
+  - `region`：区域 (例如 `us-east-1`)
+  - `serviceUrl`：可选。兼容 S3 的服务的地址
 
 - [Azure Blob](https://azure.microsoft.com/en-us/services/storage/blobs/)
 
   `azure.file://account=...;key=...`
-  
+
   详细可以参考 [快速入门：适用于 .NET 的 Azure Blob 存储客户端库](https://learn.microsoft.com/zh-cn/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=visual-studio%2Cconnection-string%2Croles-azure-portal%2Csign-in-azure-cli%2Cidentity-visual-studio&pivots=blob-storage-quickstart-scratch#authenticate-to-azure-and-authorize-access-to-blob-data)
 
+更多详细内容，请查阅：
+
+- [AWS](https://www.nuget.org/packages/FluentStorage.AWS): https://github.com/robinrodricks/FluentStorage/wiki/AWS-S3-Storage, https://github.com/robinrodricks/FluentStorage/wiki/MinIO-Storage
+- [Azure.Blobs](https://www.nuget.org/packages/FluentStorage.Azure.Blobs): https://github.com/robinrodricks/FluentStorage/wiki/Azure-Blob-Storage
+
+如果你需要更多 FluentStorage 的 Provider，请提交 Issue 说明。
 
 ### Logging
 
