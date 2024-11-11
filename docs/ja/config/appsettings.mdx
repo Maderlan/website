@@ -18,7 +18,9 @@
   "ConnectionStrings": {
     "Database": "Host=db:5432;Database=gzctf;Username=postgres;Password=<Database Password>"
     // redis is optional
-    //"RedisCache": "cache:6379,password=<Redis Password>"
+    //"RedisCache": "cache:6379,password=<Redis Password>",
+    // external storage (aws s3, azure blob) is optional, aws s3 for example
+    //"Storage": "aws.s3://keyId=<YOUR_KEY_ID>;key=<YOUR_KEY>;bucket=<YOUR_BUCKET>;region=<YOUR_REGION>"
   },
   "Logging": {
     "LogLevel": {
@@ -162,15 +164,49 @@
 
 ### ConnectionStrings
 
-ここではデータベース接続文字列を設定します。`Database`は必須項目で、`RedisCache`はオプションです。
+ここでは、データベースの接続を構成できます。
 
-GZCTF は PostgreSQL をバックエンドデータベースおよびデータ永続化に使用し、Redis をキャッシュおよびメッセージキューとして使用します。単一インスタンスのデプロイでは Redis は必須ではなく、GZCTF のメモリキャッシュを直接使用できます。複数インスタンスのデプロイでは、Redis は必須であり、共有キャッシュおよび SignalR の Scale-Out ブロードキャストとして使用されます。
+#### `Database`
+
+このフィールドは必須です。
+
+GZCTF は PostgreSQL をバックエンドデータベースおよびデータ永続化に使用します。
 
 :::info
 
 GZCTF はデータベースとして PostgreSQL のみをサポートしており、MySQL などの他のデータベースはサポートしていません。設定ファイルに正しいデータベース接続文字列を記入してください。
 
 :::
+
+#### `RedisCache`
+
+このフィールドはオプションです。
+
+GZCTFはRedis をキャッシュおよびメッセージキューとして使用します。単一インスタンスのデプロイでは Redis は必須ではなく、GZCTF のメモリキャッシュを直接使用できます。複数インスタンスのデプロイでは、Redis は必須であり、共有キャッシュおよび SignalR の Scale-Out ブロードキャストとして使用されます。
+
+v1.0以降、GZCTFは[ガーネット](https://github.com/microsoft/garnet)をキャッシュサービスとして使用することをサポートしています。
+
+#### `Storage`
+
+このフィールドはオプションです。
+
+GZCTFはAWS S3やAzure Blob Storageなどの外部ストレージサービスをサポートしています。ファイルやその他のデータを保存するためにストレージサービスを構成できます。
+
+- [AWS S3](https://aws.amazon.com/s3/)
+
+  `aws.s3://keyId=...;key=...;bucket=...;region=...`
+
+  - `keyId`: 任意。Access Key ID
+  - `key`: 任意。Secret Access Key
+  - `bucket`: Bucket 名
+  - `region`: リージョン（例：`us-east-1`）
+  - `serviceUrl`: 任意。ストレージプロバイダーのURL（例：DigitalOcean用）。
+
+- [Azure Blob](https://azure.microsoft.com/en-us/services/storage/blobs/)
+
+  `azure.file://account=...;key=...`
+
+  詳細については、[クイックスタート: .NET 用 Azure Blob Storage クライアント ライブラリ](https://learn.microsoft.com/ja-jp/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=visual-studio%2Cconnection-string%2Croles-azure-portal%2Csign-in-azure-cli%2Cidentity-visual-studio&pivots=blob-storage-quickstart-scratch#authenticate-to-azure-and-authorize-access-to-blob-data)を参照してください。
 
 ### Logging
 

@@ -18,7 +18,9 @@ Here is a complete example of configuration:
   "ConnectionStrings": {
     "Database": "Host=db:5432;Database=gzctf;Username=postgres;Password=<Database Password>"
     // redis is optional
-    //"RedisCache": "cache:6379,password=<Redis Password>"
+    //"RedisCache": "cache:6379,password=<Redis Password>",
+    // external storage (aws s3, azure blob) is optional, aws s3 for example
+    //"Storage": "aws.s3://keyId=<YOUR_KEY_ID>;key=<YOUR_KEY>;bucket=<YOUR_BUCKET>;region=<YOUR_REGION>"
   },
   "Logging": {
     "LogLevel": {
@@ -162,15 +164,50 @@ Here is a complete example of configuration:
 
 ### ConnectionStrings
 
-Here we can the configure the connection of the database. `Database` is required, and `RedisCache` is optional.
+Here we can the configure the connection of the database. 
 
-GZCTF uses PostgreSQL as the backend database and data persistence, and Redis as the cache and message queue. In the case of single instance deployment, Redis is not necessary, and GZCTF's memory cache can be used directly; in the case of multi-instance deployment, Redis is necessary as a shared cache and SignalR's Scale-Out broadcast.
+#### `Database` 
+
+This field is required.
+
+GZCTF uses PostgreSQL as the backend database and data persistence
 
 :::info
 
 GZCTF only supports PostgreSQL as the database, and does not support MySQL and other databases. Please fill in the correct database connection settings in the configuration file.
 
 :::
+
+#### `RedisCache`
+
+This field is optional.
+
+GZCTF uses Redis as the cache and message queue. In the case of single instance deployment, Redis is not necessary, and GZCTF's memory cache can be used directly; in the case of multi-instance deployment, Redis is necessary as a shared cache and SignalR's Scale-Out broadcast.
+
+In v1.0 and later, GZCTF supports using [Garnet](https://github.com/microsoft/garnet) as the cache service.
+
+
+#### `Storage`
+
+This field is optional.
+
+GZCTF supports external storage services like AWS S3 and Azure Blob Storage. You can configure the storage service to store files and other data.
+
+- [AWS S3](https://aws.amazon.com/s3/)
+
+  `aws.s3://keyId=...;key=...;bucket=...;region=...`
+
+  - `keyId`: Optional. Access Key ID
+  - `key`: Optional. Secret Access Key
+  - `bucket`: Bucket name
+  - `region`: Region (such as `us-east-1`)
+  - `serviceUrl` Optional. URL of the storage provider (for example for DigitalOcean).
+
+- [Azure Blob](https://azure.microsoft.com/en-us/services/storage/blobs/)
+
+  `azure.file://account=...;key=...`
+
+  For more information, checkout [Quickstart: Azure Blob Storage client library for .NET](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=visual-studio%2Cconnection-string%2Croles-azure-portal%2Csign-in-azure-cli%2Cidentity-visual-studio&pivots=blob-storage-quickstart-scratch#authenticate-to-azure-and-authorize-access-to-blob-data)
 
 ### Logging
 

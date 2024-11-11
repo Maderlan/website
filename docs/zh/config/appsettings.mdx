@@ -18,7 +18,9 @@
   "ConnectionStrings": {
     "Database": "Host=db:5432;Database=gzctf;Username=postgres;Password=<Database Password>"
     // redis is optional
-    //"RedisCache": "cache:6379,password=<Redis Password>"
+    //"RedisCache": "cache:6379,password=<Redis Password>",
+    // external storage (aws s3, azure blob) is optional, aws s3 for example
+    //"Storage": "aws.s3://keyId=<YOUR_KEY_ID>;key=<YOUR_KEY>;bucket=<YOUR_BUCKET>;region=<YOUR_REGION>"
   },
   "Logging": {
     "LogLevel": {
@@ -162,15 +164,68 @@
 
 ### ConnectionStrings
 
-此处配置数据库连接字符串，其中 `Database` 为必填项，`RedisCache` 为可选项。
+此处配置连接字符串
 
-GZCTF 使用 PostgreSQL 作为后端数据库和数据持久化，使用 Redis 作为缓存和消息队列。单实例部署的情况下 Redis 不是必须的，可以直接采用 GZCTF 的内存缓存；多实例部署的情况下，Redis 是必须的，用作共享缓存和 SignalR 的 Scale-Out 广播。
+#### `Database`
+
+必填参数。
+
+GZCTF 使用 PostgreSQL 作为后端数据库和数据持久化。
+
+此连接字符串的一般格式为:
+
+```
+Host=db:5432;Database=gzctf;Username=postgres;Password=<Database Password>
+```
+
+请将 `<Database Password>` 替换为你的 PostgreSQL 数据库密码 (通常是通过 `POSTGRES_PASSWORD` 环境变量设置)
+
+更多参数可以参考 [Npgsql 连接字符串参数文档](https://www.npgsql.org/doc/connection-string-parameters.html)
+
+:::warning
+
+PostgreSQL 要求初始密码需要有一定复杂度并且在初始化后不支持再通过环境变量修改密码
+
+:::
 
 :::info
 
 GZCTF 仅支持 PostgreSQL 作为数据库，不支持 MySQL 等其他数据库。请在配置文件中填写正确的数据库连接字符串。
 
 :::
+
+#### `RedisCache`
+
+可选参数。
+
+GZCTF 使用 Redis 作为缓存和消息队列。单实例部署的情况下 Redis 不是必须的，可以直接采用 GZCTF 的内存缓存；多实例部署的情况下，Redis 是必须的，用作共享缓存和 SignalR 的 Scale-Out 广播。
+
+在 v1.0 后支持使用 [Garnet](https://github.com/microsoft/garnet) 作为缓存服务。
+
+#### `Storage`
+
+可选参数。
+
+GZCTF 支持使用外部存储，如 AWS S3、Azure Blob 等。GZCTF 会将所有文件存储在外部存储。
+
+我们支持以下格式，他们所对应的 `ConnectionString` 格式如下：
+
+- [AWS S3](https://aws.amazon.com/s3/)
+
+  `aws.s3://keyId=...;key=...;bucket=...;region=...`
+
+  - `keyId`: 可选。Access Key ID
+  - `key`: 可选。Secret Access Key
+  - `bucket`: Bucket 名称
+  - `region`: 区域 (例如 `us-east-1`)
+  - `serviceUrl` 可选。兼容 S3 的服务的地址
+
+- [Azure Blob](https://azure.microsoft.com/en-us/services/storage/blobs/)
+
+  `azure.file://account=...;key=...`
+  
+  详细可以参考 [快速入门：适用于 .NET 的 Azure Blob 存储客户端库](https://learn.microsoft.com/zh-cn/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=visual-studio%2Cconnection-string%2Croles-azure-portal%2Csign-in-azure-cli%2Cidentity-visual-studio&pivots=blob-storage-quickstart-scratch#authenticate-to-azure-and-authorize-access-to-blob-data)
+
 
 ### Logging
 
