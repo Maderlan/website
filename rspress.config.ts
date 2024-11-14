@@ -83,6 +83,10 @@ export default defineConfig({
         searchPlaceholderText: "Search Docs",
         searchNoResultsText: "No results for",
         searchSuggestedQueryText: "Please try again with a different keyword",
+        editLink: {
+          text: "Edit this page on GitHub",
+          docRepoBaseUrl: "https://github.com/GZCTF/website/tree/main/docs",
+        },
       },
       {
         lang: "zh",
@@ -94,6 +98,10 @@ export default defineConfig({
         searchPlaceholderText: "搜索文档",
         searchNoResultsText: "没有找到有关内容",
         searchSuggestedQueryText: "建议更换不同的关键字后重试",
+        editLink: {
+          text: "在 GitHub 上编辑此页",
+          docRepoBaseUrl: "https://github.com/GZCTF/website/tree/main/docs",
+        },
       },
       {
         lang: "ja",
@@ -104,6 +112,10 @@ export default defineConfig({
         lastUpdatedText: "最終更新",
         searchPlaceholderText: "ドキュメントを検索",
         searchNoResultsText: "関連する結果がありません",
+        editLink: {
+          text: "GitHub でこのページを編集",
+          docRepoBaseUrl: "https://github.com/GZCTF/website/tree/main/docs",
+        },
       },
     ],
   },

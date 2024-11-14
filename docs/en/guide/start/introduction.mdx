@@ -1,10 +1,14 @@
+import { ProjectBadges } from "@Components/ProjectBadges";
+
 # Introduction
+
+<ProjectBadges />
 
 GZ::CTF is an open source CTF platform based on ASP.NET Core, using Docker or K8s as the container deployment backend, providing customizable challenges types, dynamic containers and dynamic scores.
 
-This project originated from the author's idea that the implementation of CTFd is not elegant enough, the dynamic container configuration needs to be implemented by plug-ins, and the front-end is not good-looking. At the same time, in order to hold school CTF and help students from other schools to run their CTF, I wrote one by myself.
-
 GZ::CTF is open source under AGPLv3 license, use and modification are subject to the open source license. Please refer to [Quick Start](/guide/start/quick-start) for deployment.
+
+> This project originated from the author's idea that the implementation of CTFd is not elegant enough, the dynamic container configuration needs to be implemented by plug-ins, and the front-end is not good-looking. At the same time, in order to hold school CTF and help students from other schools to run their CTF, I wrote one by myself.
 
 :::warning
 
@@ -56,8 +60,11 @@ GZ::CTF is open source under AGPLv3 license, use and modification are subject to
 - Monitor submissions and major event logs during the competition
 - Challenges traffic forwarding based on **TCP over WebSocket proxy**, configurable traffic capture
 - Cluster cache based on Redis, database storage backend based on PGSQL
-- Data tracking and monitoring based on Prometheus / OpenTelemetry
+- Storage backend based on local disk and **object storage (MinIO, S3, etc.)**
 - Customizable global configuration, platform title, record information
+- Support for **dark mode**, multiple languages, and custom themes
+- Customizable **website footer**, **website favicon**, and **html description** for SEO
+- Support metrics and distributed tracing
 - And more...
 
 ## Stars ✨
