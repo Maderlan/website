@@ -2,7 +2,7 @@
 
 Here we use the lightweight K3s as an example. If you have already deployed a K8s cluster, you can refer to the subsequent configuration for similar settings.
 
-:::warning
+:::danger
 
 **Please read the entire tutorial before proceeding, otherwise the deployment result may not meet expectations.**
 
@@ -16,9 +16,16 @@ You can find the installation instructions on the [Docker official website](http
 
 K3s is a lightweight k8s distribution that can be quickly deployed on single and multiple machines. Official documentation: [https://docs.k3s.io/](https://docs.k3s.io/)
 
-:::info
+:::warning{title="If you only have one machine?"}
 
-If you only have one machine and want to run GZCTF through Docker, you can specify the Docker backend by adding the following parameters during installation:
+If you only have one machine, we strongly recommend using other methods for deployment:
+
+- For **private intranet competitions with less than 200 teams and 30 challenges**, you can directly use Docker for deployment without using k8s.
+- For **public or larger competitions**, it is strongly recommended to use k3s for integrated deployment, **do not use Docker**.
+
+---
+
+Finally, if you really want to run k3s through Docker, you can specify the Docker backend by adding the following parameters during installation, **we strongly do NOT recommend you to do this**, you may need to fix various compatibility issues and cause a lot of trouble.
 
 ```bash
 INSTALL_K3S_EXEC="--docker"
@@ -44,18 +51,6 @@ And install k3s in the following way. For more information, please refer to [k3s
 
 ```bash
 curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="..." sh -
-```
-
-But this is not recommended, using Docker as a container backend may cause some functions to be unavailable.
-
-If you don't want to use Docker as a container backend, but need to deploy on a single machine, you can refer to the method in [K8s Cluster Deployment](/guide/deployment/k8s-only).
-
-:::
-
-```bash
-curl -sfL https://get.k3s.io | sh -
-# Check for Ready node, takes ~30 seconds
-sudo k3s kubectl get node
 ```
 
 :::info
@@ -171,7 +166,7 @@ Run the following commands on the machine where the k3s control-panel is located
   ```yaml
   apiVersion: kubelet.config.k8s.io/v1beta1
   kind: KubeletConfiguration
-  maxPods: 500
+  maxPods: 800
   ```
 
 - `sudo nano /etc/systemd/system/k3s.service`

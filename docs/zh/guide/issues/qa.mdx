@@ -60,7 +60,9 @@ Description of the challenge...
 
 ### GZCTF 集群多实例部署有什么需要注意的？
 
-GZCTF 支持多个实例同时运行，但需要提供相同的数据库实例及 Redis 实例（多实例必选）及共享存储（如 NFS）作为 PVC。其中数据库实例和共享存储用于保证数据一致，Redis 实例用于进行后端部分数据的缓存同步、SignalR 的 Scale-Out 广播。
+GZCTF 支持多个实例同时运行，但需要提供相同的数据库实例及 Redis 实例（多实例必选）及共享对象存储（如 S3），详见 [appsettings](/config/appsettings)。
+
+其中数据库实例和共享存储用于保证数据一致，Redis 实例用于进行后端部分数据的缓存同步、SignalR 的 Scale-Out 广播。
 
 同时，为了确保 SignalR 基于 websocket 的正常运行，需要在负载均衡器中配置 Sticky Session。
 

@@ -60,7 +60,9 @@ If you need to deploy internally in a K3s cluster, you need to provide two PVCs 
 
 ### Anything worth noting when deploying to a multi-node cluster?
 
-GZCTF supports running multiple instances simultaneously, but requires the same database instance and Redis instance (multiple instances are mandatory) and shared storage (such as NFS) as PVC. The database instance and shared storage are used to ensure data consistency, and the Redis instance is used for caching synchronization of backend data and Scale-Out broadcasting of SignalR.
+GZCTF supports running multiple instances simultaneously, but requires the same database instance and Redis instance (multiple instances are mandatory) and shared object storage (such as S3), see [appsettings](/config/appsettings).
+
+The database instance and shared storage are used to ensure data consistency, and the Redis instance is used for caching synchronization of backend data and Scale-Out broadcasting of SignalR.
 
 To ensure SignalR which is based on websockets can work as expected, it is necessary to configure Sticky Session in the load balancer.
 

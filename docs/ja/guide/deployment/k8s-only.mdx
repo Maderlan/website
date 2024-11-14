@@ -11,7 +11,7 @@
 ## デプロイに関する注意事項
 
 1. GZCTFは複数のインスタンスをデプロイすることをサポートしていますが、テストの結果、現時点では最も安定しているのは、単一のインスタンスをデプロイし、データベースが同一のノードに存在するデプロイ方法です。そのため、この記事では単一インスタンスのデプロイを例に説明します。
-2. 複数のインスタンスをデプロイする場合、すべてのインスタンスに共有ストレージをPVとしてマウントする必要があります。そうしないと、ファイルの一貫性を保証することができません。また、Redisをデプロイすることで、複数のインスタンスのキャッシュの一貫性を保証する必要があります。
+2. マルチインスタンスデプロイメントの場合、すべてのインスタンスはファイルの一貫性と書き込みの同時実行性を確保するためにS3/Object Storageを使用する必要があります（[#365](https://github.com/GZTimeWalker/GZCTF/issues/365)を参照してください）。さらに、マルチインスタンス間のキャッシュの一貫性を確保するためにRedisをデプロイする必要があります。両方を設定するには、[appsettings](/config/appsettings) を参照してください。Azure / AWS / Minio などの複数のストレージプロバイダーがサポートされています。
 3. 複数のインスタンスをデプロイする場合、ロードバランサーはsticky sessionを設定する必要があります。そうしないと、websocketを使用してリアルタイムデータを取得することができません。
 4. **もし面倒なら、単一インスタンスをデプロイしましょう！**
 5. クラスタ内でGZCTFをデプロイすることを選択した場合、一定の程度のPod数が必要であることに注意してください。
@@ -89,9 +89,9 @@
      namespace: gzctf-server
    spec:
      capacity:
-       storage: 2Gi
+       storage: 2Gi # S3ストレージを設定した場合、このPVはログの保存にのみ使用されるため、2Giは多すぎるでしょう。
      accessModes:
-       - ReadWriteOnce # 複数のインスタンスをデプロイする場合は、ReadWriteMany に変更してください
+       - ReadWriteOnce
      hostPath:
        path: /mnt/path/to/gzctf/files # ローカルのパス
    ---
@@ -115,10 +115,10 @@
      namespace: gzctf-server
    spec:
      accessModes:
-       - ReadWriteOnce # 複数のインスタンスをデプロイする場合は、ReadWriteMany に変更してください
+       - ReadWriteOnce
      resources:
        requests:
-         storage: 2Gi
+         storage: 2Gi # S3ストレージを設定した場合、このPVはログの保存にのみ使用されるため、2Giは多すぎるでしょう。
      volumeName: gzctf-files-pv
    ---
    apiVersion: v1

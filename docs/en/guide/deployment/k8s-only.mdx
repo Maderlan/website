@@ -11,7 +11,7 @@ This article focuses on deploying GZCTF in a Kubernetes cluster. For configurati
 ## Deployment Notes
 
 1. GZCTF supports multi-instance deployment, but based on testing, currently the most stable deployment method is a single-instance deployment with the database on the same node. Therefore, this article will focus on single-instance deployment as an example.
-2. For multi-instance deployment, all instances need to use S3/Object Storage to ensure file consistency and write concurenncy (See [#365](https://github.com/GZTimeWalker/GZCTF/issues/365)). Additionally, Redis needs to be deployed to ensure cache consistency among multiple instances. Refer to [appsettings](/config/config/appsettings) documentation to configure both. Multiple providers are supported such as Azure/AWS/Minio.
+2. For multi-instance deployment, all instances need to use S3/Object Storage to ensure file consistency and write concurenncy (See [#365](https://github.com/GZTimeWalker/GZCTF/issues/365)). Additionally, Redis needs to be deployed to ensure cache consistency among multiple instances. Refer to [appsettings](/config/appsettings) documentation to configure both. Multiple providers are supported such as Azure/AWS/Minio.
 3. For multi-instance deployment, the load balancer needs to be configured with sticky sessions to enable real-time data retrieval using websockets.
 4. **If you prefer a simpler deployment, go for a single-instance deployment!**
 5. Since you have chosen to deploy with Kubernetes, it implies that you need a larger number of Pods. Please pay attention to the following configuration:
@@ -32,7 +32,7 @@ This article focuses on deploying GZCTF in a Kubernetes cluster. For configurati
 
 ## Deploying GZCTF
 
-1. Create namespaces and configuration files. See [appsettings](/config/config/appsettings)
+1. Create namespaces and configuration files. See [appsettings](/config/appsettings)
 
    ```yaml
    apiVersion: v1

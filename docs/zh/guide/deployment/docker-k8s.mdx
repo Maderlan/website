@@ -2,9 +2,9 @@
 
 本文中以轻量化部署的 K3s 为例，若您已经部署了 K8s 集群，可以参考本文后续配置进行类似的设置。
 
-:::warning
+:::danger
 
-本篇教程请务必全部阅读后再进行操作，否则可能导致部署结果达不到预期。
+**本篇教程请务必全部阅读后再进行操作，否则可能导致部署结果达不到预期。**
 
 :::
 
@@ -16,9 +16,16 @@
 
 k3s 是一个轻量级的 k8s 发行版，可以在单机和多机上快速部署 k8s 集群。官网文档地址：[https://docs.k3s.io/zh](https://docs.k3s.io/zh)
 
-:::info
+:::warning{title="如果你只有一台机器？"}
 
-如果你的机器只有一台，并想通过 Docker 运行 GZCTF 可以在安装时指定添加以下参数指定 Docker 后端（不推荐）：
+如果你只有一台机器，我们强烈建议你使用其他的方式进行部署：
+
+- 对于**小于 200 支队伍、30 道题目的私有内网**比赛，可以直接使用 Docker 部署，无需使用 k8s。
+- 对于**公开或规模更大的比赛**，强烈建议使用 k3s 一体化部署，**不要使用 Docker**。
+
+---
+
+最后，如果你真的想通过 Docker 运行 k3s，可以在安装时指定添加以下参数指定 Docker 后端，**我们强烈不推荐你这样做**，你可能需要修复各种兼容性问题，并造成很多困扰。
 
 ```bash
 INSTALL_K3S_EXEC="--docker"
@@ -44,18 +51,6 @@ INSTALL_K3S_EXEC="--kube-controller-manager-arg=node-cidr-mask-size=16"
 
 ```bash
 curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="..." sh -
-```
-
-但这种方法是不推荐的，使用 Docker 作为容器后端可能会导致一些功能不可用。
-
-如果不想使用 Docker 作为容器后端，但是需要单机部署，那么可以参考 [K8s 集群部署](/guide/deployment/k8s-only) 中的方法。
-
-:::
-
-```bash
-curl -sfL https://get.k3s.io | sh -
-# Check for Ready node, takes ~30 seconds
-sudo k3s kubectl get node
 ```
 
 :::info
@@ -171,7 +166,7 @@ Reference: [How do you increase maximum pods per node in K3S?](https://stackover
   ```yaml
   apiVersion: kubelet.config.k8s.io/v1beta1
   kind: KubeletConfiguration
-  maxPods: 500
+  maxPods: 800
   ```
 
 - `sudo nano /etc/systemd/system/k3s.service`
