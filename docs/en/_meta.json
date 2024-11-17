@@ -2,11 +2,11 @@
   {
     "text": "guide",
     "link": "/guide/start/introduction",
-    "activeMatch": "^/guide/"
+    "activeMatch": "/guide/"
   },
   {
     "text": "config",
     "link": "/config/appsettings",
-    "activeMatch": "^/config/"
+    "activeMatch": "/config/"
   }
 ]

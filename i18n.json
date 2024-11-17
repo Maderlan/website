@@ -1,32 +1,32 @@
 {
-  "guide": {
-    "en": "Guide",
-    "zh": "指南",
-    "ja": "ガイド"
-  },
   "config": {
     "en": "Config",
-    "zh": "配置",
-    "ja": "設定"
-  },
-  "start": {
-    "en": "Getting Started",
-    "zh": "开始",
-    "ja": "はじめに"
-  },
-  "features": {
-    "en": "Features",
-    "zh": "特性",
-    "ja": "特徴"
+    "ja": "設定",
+    "zh": "配置"
   },
   "deployment": {
     "en": "Deployment",
-    "zh": "部署",
-    "ja": "デプロイ"
+    "ja": "デプロイ",
+    "zh": "部署"
+  },
+  "features": {
+    "en": "Features",
+    "ja": "特徴",
+    "zh": "特性"
+  },
+  "guide": {
+    "en": "Guide",
+    "ja": "ガイド",
+    "zh": "指南"
   },
   "issues": {
     "en": "Issues",
-    "zh": "问题",
-    "ja": "問題"
+    "ja": "問題",
+    "zh": "问题"
+  },
+  "start": {
+    "en": "Getting Started",
+    "ja": "はじめに",
+    "zh": "开始"
   }
 }
