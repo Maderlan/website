@@ -116,9 +116,14 @@
     "Provider": "None",
     "SiteKey": "...",
     "SecretKey": "...",
+    // optional
     "GoogleRecaptcha": {
       "VerifyAPIAddress": "https://www.recaptcha.net/recaptcha/api/siteverify",
       "RecaptchaThreshold": "0.5"
+    },
+    // optional
+    "HashPow": {
+      "Difficulty": 18
     }
   },
   "ForwardedOptions": {
@@ -381,9 +386,21 @@ GZCTF 支持测量和分布式追踪。您可以配置您想要使用的提供�
 
 此处配置验证码相关信息，用于注册、找回账号和登录时的验证码验证，可选项。
 
-- **Provider:** 验证码提供商，可选 `None`、`GoogleRecaptcha` 或 `CloudflareTurnstile`
+- **Provider:** 验证码提供商，可选 `None`、`HashPow`、`GoogleRecaptcha` 或 `CloudflareTurnstile`
 - **SiteKey:** 验证码 Sitekey
 - **SecretKey:** 验证码 Secretkey
+
+#### HashPow
+
+配置 HashPow 验证码的相关信息，可选项。
+
+:::info
+
+**安全上下文**: 此项功能仅在一些支持的浏览器的[安全上下文](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts)（HTTPS）中可用。
+
+:::
+
+- **Difficulty:** HashPow 验证码的难度，用于指定哈希二进制前导零位数，范围为 8 至 48。
 
 #### GoogleRecaptcha
 
