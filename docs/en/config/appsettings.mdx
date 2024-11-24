@@ -165,7 +165,7 @@ Here is a complete example of configuration:
 }
 ```
 
-## Core configuration fields
+## Configuration fields
 
 ### ConnectionStrings
 
@@ -346,9 +346,25 @@ In order to meet the network policy, GZCTF will create a NetworkPolicy named `gz
 
 Enable/Disable request logging, if enabled, detailed information of each request will be appended to the log. Static file requests are not included in the output here.
 
+:::warning
+
+This configuration item will record specific request information, which can **significantly impact** the log file size and platform concurrency performance. Please enable it only during debugging.
+
+:::
+
 ### DisableRateLimit
 
 Enable/Disable request rate limit, if enabled, the request rate of each IP and API will be limited according to the preset rules.
+
+:::danger
+
+**This feature is the fundamental to the security of GZCTF, take your own risk when disabling it.**
+
+In most cases, there is no situation where users can reach the rate limit. If you encounter frequent triggering of the rate limit and abnormal IP information in the backend logs (such as a large number of requests from the same IP), please check the **trusted proxy configurations**.
+
+With this configuration enabled, GZCTF can use minimal resources to block malicious requests that exceed normal requests by dozens of times, ensuring the platform’s stable operation.
+
+:::
 
 ### RegistryConfig
 
@@ -366,11 +382,19 @@ Please make sure that the password does not contain special characters (such as 
 
 ### CaptchaConfig
 
-Configure the Captcha used for user registration, account recovery and login, optional.
+Configure the CAPTCHA used for user registration, account recovery and login, optional.
 
-- **Provider:** Captcha provider, can be `None`, `HashPow`, `GoogleRecaptcha` or `CloudflareTurnstile`
-- **SiteKey:** Captcha Sitekey
-- **SecretKey:** Captcha Secretkey
+- **Provider:** CAPTCHA provider, can be `None`, `HashPow`, `GoogleRecaptcha` or `CloudflareTurnstile`
+- **SiteKey:** CAPTCHA Sitekey
+- **SecretKey:** CAPTCHA Secretkey
+
+:::tip
+
+To ensure security and avoid malicious registration and email consumption, it is strongly recommended to enable the CAPTCHA function.
+
+It is recommended to use the `CloudflareTurnstile` CAPTCHA provider, [related documentation](https://www.cloudflare.com/application-services/products/turnstile/).
+
+:::
 
 #### HashPow
 
